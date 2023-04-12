@@ -1,0 +1,29 @@
+{
+  "name": "iotgreenhouse",
+  "version": "1.0.0",
+  "description": "Node.js and Express backend server for the web application.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [
+    "problems"
+  ],
+  "author": "Helena O'Sullivan (unless something breaks, then the author is unknown)",
+  "license": "ISC",
+  "dependencies": {
+    "aws-crt": "^1.15.14",
+    "aws-iot-device-sdk-v2": "^1.10.1",
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "express-handlebars": "^6.0.7",
+    "forever": "^4.0.3",
+    "forever-monitor": "^3.0.3",
+    "mongodb": "^4.11.0",
+    "mongoose": "^6.10.5",
+    "pug": "^3.0.2"
+  }
+}

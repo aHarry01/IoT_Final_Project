@@ -1,0 +1,46 @@
+nav#navigationBar{
+    background: #394033
+}
+
+#WebPageIcon{
+    width: 62px;
+    height: 62px;
+    cursor: pointer;
+    margin-left: 13px;
+}
+#NavIcon{
+    width: 35px;
+    height: 35px;
+    margin-top: 24px;
+    margin-left: 20px;
+}
+div#navbarNavAltMarkup{
+    margin-left: 41.3%; /*31.3%*/
+}
+a#navbarLink{
+    margin-left: 5px;
+    font-family: 'Playfair Display';
+    font-style: normal;
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 67px;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.25em;
+    color: #E2E2D5 !important;
+}
+
+a#navbarLink:hover{
+    font-family: 'Playfair Display';
+    font-weight:bold;
+    cursor: pointer;
+}
+
+/*
+a#navbarLink.nav-item.nav-link.active{
+    font-family: 'Playfair Display';
+    font-weight: bold;
+    color: #a5ae87 !important;
+}
+*/

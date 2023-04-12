@@ -1,0 +1,223 @@
+html,body {
+  background: #394033;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+#page{
+  margin-top: 6%;
+}
+
+#DataColumns{
+  padding: 0px;
+}
+
+#PageColumns{
+  margin-left: 4%;
+}
+
+#ActuatorControlDiv{
+  background: #ebebe5;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 3%;
+  border: 5px solid #a5ae87;
+  border-radius: 5px;
+}
+
+#LiveDataDiv{
+  background: #ebebe5;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-right: 20%;
+  margin-bottom: 3%;
+  border: 5px solid #a5ae87;
+  border-radius: 5px;
+}
+
+.DataOutput{
+  margin-left: 10%;
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.25em;
+  color: #424141 !important;
+}
+
+#PersonalNotesDiv{
+  background: #ebebe5;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 3%;
+  border: 5px solid #a5ae87;
+  border-radius: 5px;
+}
+
+.Title{
+  margin-left: 5%;
+  margin-bottom: 15px;
+  font-family: 'Advent Pro';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 35px;
+  line-height: 78px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  letter-spacing: 0.1em;
+  color: #424141;
+  text-shadow: 3px 2px 2px rgba(0, 0, 0, 0.25);
+}
+
+.MiniTitle{
+  margin-left: 6%;
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  letter-spacing: 0.25em;
+  color: #424141;
+}
+
+.form-control{
+  background: #D9D9D9 !important;
+  border-radius: 22px !important;
+  margin-bottom: 7%;
+  margin-left: 10%;
+  height: 40px;
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 40px;
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.25em;
+  color: #424141 !important;
+}
+
+.form-control:focus{
+  border: 0px solid transparent !important;
+  outline: none;
+  box-shadow: 0 0 5px transparent !important;
+  color: #424141 !important;
+}
+
+input#TitleInput.form-control{
+  width: 85%;
+}
+
+input#DateInput.form-control{
+  width: 85%;
+}
+
+input#NotesInput.form-control{
+  width: 85%;
+}
+
+button#SaveButton{
+  background: #6B6863;
+  margin-left: 26%;
+  margin-bottom: 10px;
+  border-radius: 131px;
+  border-width: 3px;
+  border-top: 3px solid transparent;
+  border: 3px solid transparent;  
+  width: 300px;
+  font-family: 'Advent Pro';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.5em;
+  line-height: 45px;
+  text-align: center;
+  letter-spacing: 0.2em;
+  color: #E2E2D5;
+  outline: none;
+  text-shadow: 3px 2px 2px rgba(0, 0, 0, 0.25);
+}
+
+button#SaveButton:hover{
+  border-width: 3px;
+  background: transparent;
+  color: #6B6863;
+  border-top: 3px solid #6B6863;
+  border: 3px solid #6B6863;  
+  outline: none;
+}
+
+/* CSS Sliders */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #a5ae87;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #a5ae87;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* CSS Carousel */
+#CarouselImage{
+  margin-left: 30px;
+  width: 600px; 
+  height: 450px; 
+  text-align:center;
+  margin:0; 
+  padding:0;
+  border: transparent !important;
+  border-radius: 0px !important;
+}
+
+
+
