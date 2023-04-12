@@ -8,8 +8,8 @@
 		* npm install express mongoose cors --save
 		* npm install dotenv
 		* npm install body-parser
-		* sudo npm install forever-monitor
-		* sudo npm i -g nodemon
+		* npm install forever-monitor
+		* npm i -g nodemon
 		* npm install forever
 		* npm install express-handlebars
 		* npm install aws-crt
