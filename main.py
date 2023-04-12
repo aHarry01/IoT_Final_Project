@@ -4,6 +4,14 @@ import spidev
 import DHT
 import pigpio
 
+import datetime
+import pymongo
+from pymongo import MongoClient
+
+#TODO
+# control water valve manually
+# send alerts (how to send data to web site??? or not ...)
+
 # pin configurations
 DHT_PIN = 18 # GPIO18, pin12
 
@@ -17,6 +25,52 @@ ONE_TIME_HIGH_RES_MODE = 0x20
 spi_bus = 0
 spi_chip_select = 0
 
+client = pymongo.MongoClient("mongodb+srv://IoTwebapp:T8hz4Xe4Z4pY5cDI@rpi-sensor-data.vmud14a.mongodb.net/?retryWrites=true&w=majority")
+
+# Datbase 
+db = client.SensorData
+# Collections
+collectionHumidity = db.HumidityData
+collectionLightIntensity = db.LightIntensityData
+collectionTemperature = db.TemperatureData
+collectionSoil = db.SoilMoistureData
+
+def upload_data(humidity, temp, lx, soil):
+    # Format of Data
+    SensorData = {
+            'Data':humidity,
+            'SensorID':'TempHumidity_1',
+            'SensorName': 'Humidity Sensor',
+            'TimeCollected': datetime.datetime.now()
+    }
+    collectionHumidity.insert_one(SensorData)
+    
+    # Format of Data
+    SensorData = {
+            'Data':humidity,
+            'SensorID':'TempHumidity_1',
+            'SensorName': 'Temperature Sensor',
+            'TimeCollected': datetime.datetime.now()
+    }
+    collectionTemperature.insert_one(SensorData)
+    
+    # Format of Data
+    SensorData = {
+            'Data':lx,
+            'SensorID':'LightIntensity_1',
+            'SensorName': 'Light Intensity Sensor',
+            'TimeCollected': datetime.datetime.now()
+    }
+    collectionLightIntensity.insert_one(SensorData)
+    
+    # Format of Data
+    SensorData = {
+            'Data':soil,
+            'SensorID':'SoilMoisture_1',
+            'SensorName': 'Soil Moisture Sensor',
+            'TimeCollected': datetime.datetime.now()
+    }
+    collectionSoil.insert_one(SensorData)
 
 # --- DEVICE FUNCTIONS ---
 def configure_devices():
@@ -55,5 +109,7 @@ if __name__ == "__main__":
 		t, h = read_temp_humidity(dhtSensor)
 		lx = read_light_intensity(i2c_bus)
 		soil_moisture = read_soil_moisture(spi)
+		upload_data(h,t,lx,soil_moisture)
 		print(f"Temperature:{t}\nHumidity:{h}\nLight Intensity:{lx}\nSoil Moisture:{soil_moisture}\n")
 		time.sleep(3)
+
