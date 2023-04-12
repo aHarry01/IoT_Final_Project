@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+  <app-navigation></app-navigation>
+  <div class="row" id="page">
+    <div class="col-6" id="PageColumns">
+      <!-- Carousel -->
+      <div id="CarouselImage">
+        <ng-image-slider #nav
+          [images]="imageObject"
+          [infinite]="true"
+          [autoSlide]="1"
+          [imageSize]="{width: '100%', height: 400}"
+          slideImage="1" ></ng-image-slider>
+      </div>
+      <div id="LiveDataDiv">
+        <div class="container" id="DataDiv">
+          <h1 class="Title">Real Time Sensor Data</h1>
+          <div class="row">
+            <div class="col-1"></div>
+            <div class="col-6" id="DataColumns">
+              <h2 class="MiniTitle">Temperature Value:</h2>
+            </div>
+            <div class="col-4">
+              <p class="DataOutput">  C</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-1"></div>
+            <div class="col-6" id="DataColumns">
+              <h2 class="MiniTitle">Humidity Value:</h2>
+            </div>
+            <div class="col-4">
+              <p class="DataOutput">  %</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-1"></div>
+            <div class="col-6" id="DataColumns">
+              <h2 class="MiniTitle">Light Value:</h2>
+            </div>
+            <div class="col-4">
+              <p class="DataOutput"> %</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-1"></div>
+            <div class="col-6" id="DataColumns">
+              <h2 class="MiniTitle">Moisture Value:</h2>
+            </div>
+            <div class="col-4">
+              <p class="DataOutput"> %</p>
+            </div>
+          </div>
+    </div>
+      </div>
+    </div>
+    <div class="col-5">
+      <div id="ActuatorControlDiv">
+        <h1 class="Title">Actuator Controls</h1>
+        <div class="row">
+          <div class="col-1"></div>
+          <div class="col-5">
+            <h2 class="MiniTitle"> Water Valve:</h2>
+          </div>
+          <div class="col-4">
+            <label class="switch" id="FanRelay">
+              <input type="checkbox" (click) = WaterValve()>
+              <span class="slider"></span>
+            </label>
+          </div>
+        </div>
+        <br>
+      </div>
+      <div id="PersonalNotesDiv">
+        <div class="container" id="NotesDiv">
+          <h1 class="Title">Personal Notes</h1>
+        </div>
+        <!--<button id="SaveButton" (click)="updateUserNotes()" >Save</button>-->
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+
+    <!--<img id="PlantImage1" src="../../../assets/Images/Plant1.PNG" alt="">
+    <img id="PlantImage2" src="../../../assets/Images/Plant2.PNG" alt="">
+    <div>
+        <label class="switch" id="Actuator1">
+            <input type="checkbox" (click) = StatusChangeActuator1()>
+            <span class="slider"></span>
+          </label>
+          <br>
+          <label class="switch" id="Actuator2">
+            <input type="checkbox" (click) = StatusChangeActuator2()>
+            <span class="slider"></span>
+          </label>
+          <br>
+          <label class="switch" id="Actuator3">
+            <input type="checkbox" (click) = StatusChangeActuator3()>
+            <span class="slider"></span>
+          </label>
+    </div>-->
+

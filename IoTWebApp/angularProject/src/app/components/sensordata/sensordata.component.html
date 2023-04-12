@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <app-navigation></app-navigation>
+    <h1 id="SensorDataTitle">Sensor Data:</h1>
+
+    <button id="CSVButton">Export to CSV</button>
+    
+    <div *ngIf="displayTable" id="SensorTableDiv">
+        <table id="SensorTable" datatable [dtOptions]="dtOptions" class="row-border hover">
+            <thead>
+                <tr>
+                    <th>Sensor ID</th>
+                    <th>Sensor Name</th>
+                    <th>Date Collected</th>
+                    <th>Time Collected</th>
+                    <th>Data</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let hsensordata of Hsensor">
+                    <td>{{hsensordata._id}}</td>
+                    <td>{{hsensordata.SensorName}}</td>
+                    <td>{{hsensordata.SensorID}}</td>
+                    <td>{{hsensordata.TimeCollected}}</td>
+                    <td>{{hsensordata.Data.$numberDecimal}} %</td>
+                </tr>
+            </tbody>
+            <tbody>
+                <tr *ngFor="let lsensordata of Lsensor">
+                    <td>{{lsensordata._id}}</td>
+                    <td>{{lsensordata.SensorName}}</td>
+                    <td>{{lsensordata.SensorID}}</td>
+                    <td>{{lsensordata.TimeCollected}}</td>
+                    <td>{{lsensordata.Data.$numberDecimal}} %</td>
+                </tr>
+            </tbody>
+            <tbody>
+                <tr *ngFor="let msensordata of Msensor">
+                    <td>{{msensordata._id}}</td>
+                    <td>{{msensordata.SensorName}}</td>
+                    <td>{{msensordata.SensorID}}</td>
+                    <td>{{msensordata.TimeCollected}}</td>
+                    <td>{{msensordata.Data.$numberDecimal}} %</td>
+                </tr>
+            </tbody>
+            <tbody>
+                <tr *ngFor="let tsensordata of Tsensor">
+                    <td>{{tsensordata._id}}</td>
+                    <td>{{tsensordata.SensorName}}</td>
+                    <td>{{tsensordata.SensorID}}</td>
+                    <td>{{tsensordata.TimeCollected}}</td>
+                    <td>{{tsensordata.Data.$numberDecimal}} C</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
+
