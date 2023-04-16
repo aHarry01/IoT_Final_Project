@@ -8,15 +8,6 @@
   <app-navigation></app-navigation>
   <div class="row" id="page">
     <div class="col-6" id="PageColumns">
-      <!-- Carousel -->
-      <div id="CarouselImage">
-        <ng-image-slider #nav
-          [images]="imageObject"
-          [infinite]="true"
-          [autoSlide]="1"
-          [imageSize]="{width: '100%', height: 400}"
-          slideImage="1" ></ng-image-slider>
-      </div>
       <div id="LiveDataDiv">
         <div class="container" id="DataDiv">
           <h1 class="Title">Real Time Sensor Data</h1>
@@ -61,17 +52,51 @@
     </div>
     <div class="col-5">
       <div id="ActuatorControlDiv">
-        <h1 class="Title">Actuator Controls</h1>
+        <h1 class="Title">Controls & Configurations</h1>
         <div class="row">
           <div class="col-1"></div>
           <div class="col-5">
-            <h2 class="MiniTitle"> Water Valve:</h2>
+            <h2 class="MiniTitle"> Water Pump:</h2>
           </div>
           <div class="col-4">
-            <label class="switch" id="FanRelay">
-              <input type="checkbox" (click) = WaterValve()>
-              <span class="slider"></span>
-            </label>
+              <input type="button" (click)="waterPlant($event)" value="Water Plant">
+          </div>
+        </div>
+		<div class="row">
+		   <div class="col-1"></div>
+          <div class="col-5">
+            <h2 class="MiniTitle"> Water Method:</h2>
+          </div>
+          <div class="col-4">
+			<select name="watering" id="waterMethod" (click)="changeWateringMode($event)"> 
+                      <option value="manual">Manual</option>
+                      <option value="time">Time based</option>
+                      <option value="soil_moisture">Soil Moisture based</option> </select>
+          </div>
+		</div>
+		<div class="row">
+		   <div class="col-1"></div>
+          <div class="col-5">
+            <h2 class="MiniTitle"> Configure Alert Levels:</h2>
+          </div>
+          <div class="col-4">
+            <table>
+                <tr> <td> Temperature Range (F): <input type="number" id="tempLower"> to <input type="number" id="tempUpper"> </td> </tr>
+                <tr> <td> Humidity Range (%): <input type="number" id="humidityLower"> to <input type="number" id="humidityUpper"> </td> </tr>
+                <tr> <td> Soil Moisture Setpoint (%): <input type="number" id="soilMoisture"> </td> </tr>
+                <tr> <td> Daily Sunlight Exposure Time: <input type="number" id="sunlightTime"> </td> </tr> 
+				<tr> <td> Watering Time (hrs): <input type="number" id="wateringTime"> </td> </tr> 
+                <tr> <td> <input type="button" value="Submit Alert Levels" (click)="updateAlertLevels($event)"> </td></tr>
+            </table>
+          </div>
+		</div>
+		<div class="row">
+          <div class="col-1"></div>
+          <div class="col-5">
+            <h2 class="MiniTitle"> Plant Status:</h2>
+          </div>
+          <div class="col-4">
+              <p id="plantStatus"> </p>
           </div>
         </div>
         <br>
