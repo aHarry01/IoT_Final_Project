@@ -1,4 +1,5 @@
 import time
+import datetime
 import smbus
 import spidev
 import DHT
@@ -54,7 +55,7 @@ optimalLevels = {'tempLower': 60, 'tempUpper': 85,
 		'humidityLower': 30, 'humidityUpper': 95,
 		'soilMoistureSetpoint': 50,
 		'sunlightTime': 4.5,
-		'wateringTime': 1}
+		'wateringTime': 40}
 # Watering mode
 # manual = only water when user gives the command
 # time = water every 'wateringTime' hours
@@ -95,9 +96,10 @@ def read_light_intensity(i2c_bus):
 def read_soil_moisture(spi):
 	raw = spi.readbytes(2)
 	raw = (raw[0]<<8)|raw[1]
-	# in practice, saturated soil reads 1200-1400 and dry soil reads 2700-2900
-	# so use 1200 as upper soil moisture & 2900 as lower soil moisture
-	return 100 - 100*float(raw-1200)/(2900-1200)
+	#print(f"Soil moisture raw {raw}")
+	# in testing, saturated soil read 1100-1400 and dry soil read 2700-3100
+	# so use 1100 as upper soil moisture & 3100 as lower soil moisture
+	return 100 - 100*float(raw-1100)/(3100-1100)
 
 def run_water_pump(seconds):
 	GPIO.output(WATER_PIN, GPIO.HIGH)
@@ -208,7 +210,7 @@ if __name__ == "__main__":
 	except Exception as e:
 		print("WebSocket failed to connect")
 		print(e)
-
+		
 	wateringPause = False
 	lastWatered = None
 	while True:
@@ -241,14 +243,19 @@ if __name__ == "__main__":
 			ws.send(f'plantStatus:{newPlantStatus}')
 		plantStatus = newPlantStatus
 
-                # water based on soil moisture
-                # if we just watered, wait 2 minutes before concluding it wasn't enough
-                # and watering again
+        # water based on soil moisture
+        # if we just watered, wait 2 minutes before concluding it wasn't enough
+        # and watering again
 		if wateringMode == "soil_moisture" and (lastWatered == None or now-lastWatered > 120):
 			# don't water until we're ~10% below where we should be
 			if soil_moisture < 0.9*optimalLevels['soilMoistureSetpoint']:
 				run_water_pump(3)
 				lastWatered = time.time()
+		# water based on time since last watered
+		# uses seconds for testing, real system would use hours
+		elif wateringMode == "time" and (lastWatered == None or now-lastWatered > int(optimalLevels['wateringTime'])):
+			run_water_pump(3)
+			lastWatered = time.time()    
 
     
 		print(f"Temperature:{t}\nHumidity:{h}\nLight Intensity:{lx}\nSoil Moisture:{soil_moisture}\n")
