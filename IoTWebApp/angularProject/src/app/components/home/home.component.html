@@ -8,7 +8,7 @@
   <app-navigation></app-navigation>
   <div class="row" id="page">
     <div class="col-6" id="PageColumns">
-      <div id="LiveDataDiv">
+      <!-- <div id="LiveDataDiv">
         <div class="container" id="DataDiv">
           <h1 class="Title">Last Sensor Reading:</h1>
           <div class="row">
@@ -52,7 +52,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
       <div id="PlantStatusDiv">
         <div class="container">
           <h1 class="Title">Plants:</h1>
@@ -77,11 +77,11 @@
             <h2 class="MiniTitle"> Water Pump:</h2>
           </div>
           <div class="col-4">
-            <label class="switch" id="FanRelay">
+            <!-- <label class="switch" id="FanRelay">
               <input (click)="waterPlant($event)" type="checkbox">
               <span class="slider"></span>
-              <!--<input type="button"  (click)="waterPlant($event)" value="Water Plant">-->
-            </label>
+            </label> -->
+            <input type="button"  (click)="waterPlant($event)" value="Water Plant">
           </div>
         </div>
         <div class="row">

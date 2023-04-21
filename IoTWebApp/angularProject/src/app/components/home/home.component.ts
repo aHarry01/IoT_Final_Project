@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ConnectableObservable } from 'rxjs';
+import { SensorService } from 'src/app/Services/sensor.service';
 
 @Component({
   selector: 'app-home',
@@ -8,12 +9,19 @@ import { ConnectableObservable } from 'rxjs';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  Hsensor?: any;
+  Lsensor?: any;
+  Msensor?: any;
+  Tsensor?: any;
 
-
-  constructor(private http:HttpClient) {}
+  constructor(private http:HttpClient, private sensorService: SensorService) {}
 
 
   ngOnInit(): void {
+    this.retrieveHumidityData();    
+    this.retrieveLightData();   
+    this.retrieveMoistureData();   
+    this.retrieveTemperatureData();  
     //get plant status when page is loaded 
     // https://www.geeksforgeeks.org/how-to-make-ajax-call-from-javascript/
     let xhr = new XMLHttpRequest();
@@ -70,6 +78,47 @@ export class HomeComponent implements OnInit {
     xhr.open("GET", url, true);
     // Sending our request 
     xhr.send();
+  }
+
+  retrieveHumidityData(): void {
+    this.sensorService.getAllHumidity()
+      .subscribe({
+        next: (datah) => {
+          this.Hsensor = datah;
+          console.log(datah);
+        },
+        error: (e) => console.error(e)
+      });
+  }
+  retrieveLightData(): void {
+    this.sensorService.getAllLight()
+      .subscribe({
+        next: (datal) => {
+          this.Lsensor = datal;
+          console.log(datal);
+        },
+        error: (e) => console.error(e)
+      });
+  }
+  retrieveMoistureData(): void {
+    this.sensorService.getAllMoisture()
+      .subscribe({
+        next: (datam) => {
+          this.Msensor = datam;
+          console.log(datam);
+        },
+        error: (e) => console.error(e)
+      });
+  }
+  retrieveTemperatureData(): void {
+    this.sensorService.getAllTemperature()
+      .subscribe({
+        next: (datat) => {
+          this.Tsensor = datat;
+          console.log(datat);
+        },
+        error: (e) => console.error(e)
+      });
   }
 
 
