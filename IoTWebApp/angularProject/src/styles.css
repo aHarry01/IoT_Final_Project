@@ -1,6 +1,43 @@
 /* You can add global styles to this file, and also import other style files */
 
 html,body {
-    background: #394033;
+    background: #234044;
 }
 
+/* Footer */
+#homefooter {
+    margin-top: 12%;
+    width: 100%;
+    height: 164px;
+    background: #312244;
+
+    align-items: center;
+}
+
+a#IconBoxFooter{
+    padding-top: 0px;
+}
+ 
+#IconFooter{
+    height: 105px;
+    width: 110px;
+    padding-top: 1%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.FooterText{
+    margin-top: 0px;
+    margin-left: 1.8%;
+    margin-right: auto;
+
+    color: #DB966C;
+    font-family: 'Quicksand';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 50px;
+    text-align: center;
+    letter-spacing: 0.25em;
+}

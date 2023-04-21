@@ -6,58 +6,128 @@
 </head>
 <body>
     <app-navigation></app-navigation>
-    <h1 id="SensorDataTitle">Sensor Data:</h1>
 
-    <button id="CSVButton">Export to CSV</button>
-    
-    <div *ngIf="displayTable" id="SensorTableDiv">
-        <table id="SensorTable" datatable [dtOptions]="dtOptions" class="row-border hover">
-            <thead>
-                <tr>
-                    <th>Sensor ID</th>
-                    <th>Sensor Name</th>
-                    <th>Date Collected</th>
-                    <th>Time Collected</th>
-                    <th>Data</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let hsensordata of Hsensor">
-                    <td>{{hsensordata._id}}</td>
-                    <td>{{hsensordata.SensorName}}</td>
-                    <td>{{hsensordata.SensorID}}</td>
-                    <td>{{hsensordata.TimeCollected}}</td>
-                    <td>{{hsensordata.Data.$numberDecimal}} %</td>
-                </tr>
-            </tbody>
-            <tbody>
-                <tr *ngFor="let lsensordata of Lsensor">
-                    <td>{{lsensordata._id}}</td>
-                    <td>{{lsensordata.SensorName}}</td>
-                    <td>{{lsensordata.SensorID}}</td>
-                    <td>{{lsensordata.TimeCollected}}</td>
-                    <td>{{lsensordata.Data.$numberDecimal}} %</td>
-                </tr>
-            </tbody>
-            <tbody>
-                <tr *ngFor="let msensordata of Msensor">
-                    <td>{{msensordata._id}}</td>
-                    <td>{{msensordata.SensorName}}</td>
-                    <td>{{msensordata.SensorID}}</td>
-                    <td>{{msensordata.TimeCollected}}</td>
-                    <td>{{msensordata.Data.$numberDecimal}} %</td>
-                </tr>
-            </tbody>
-            <tbody>
-                <tr *ngFor="let tsensordata of Tsensor">
-                    <td>{{tsensordata._id}}</td>
-                    <td>{{tsensordata.SensorName}}</td>
-                    <td>{{tsensordata.SensorID}}</td>
-                    <td>{{tsensordata.TimeCollected}}</td>
-                    <td>{{tsensordata.Data.$numberDecimal}} C</td>
-                </tr>
-            </tbody>
-        </table>
+    <div class="container" id="TablesofData">
+        <div class="row">
+          <div class="col-6">
+            <div class="row" id="RowTitle" style="margin-bottom: 3.5% !important">
+                <div class="col-6">
+                    <h1 class="SensorDataTitles">Humidity Data:</h1>
+                </div>
+                <div class="col-6">
+                    <button class="ButtonCSV" (click)="ExportCSV()">Export to CSV</button>
+                </div>
+            </div>
+            <div *ngIf="displayTable" class="SensorTableDiv">
+                <table id="SensorTable" datatable [dtOptions]="dtOptions" class="row-border hover">
+                    <thead>
+                        <tr>
+                            <th>Sensor Name</th>
+                            <th>Time Collected</th>
+                            <th>Data</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let hsensordata of Hsensor">
+                            <td>{{hsensordata.SensorID}}</td>
+                            <td>{{hsensordata.TimeCollected}}</td>
+                            <td>{{hsensordata.Data}} %</td> <!--.$numberDecimal   When Data is in Decimal128 and not Int32-->
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="row" id="RowTitle">
+                <div class="col-8">
+                    <h1 class="SensorDataTitles">Light Exposure Data:</h1>
+                </div>
+                <div class="col-4">
+                    <button class="ButtonCSV3" (click)="ExportCSV()">Export to CSV</button>
+                </div>
+            </div>
+            <div *ngIf="displayTable" class="SensorTableDiv">
+                <table id="SensorTable" datatable [dtOptions]="dtOptions" class="row-border hover">
+                    <thead>
+                        <tr>
+                            <th>Sensor Name</th>
+                            <th>Time Collected</th>
+                            <th>Data</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let lsensordata of Lsensor">
+                            <td>{{lsensordata.SensorID}}</td>
+                            <td>{{lsensordata.TimeCollected}}</td>
+                            <td>{{lsensordata.Data}} %</td> <!--.$numberDecimal   When Data is in Decimal128 and not Int32-->
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+          </div>
+        </div>
+        <div class="row" style="margin-top: 8% !important">
+            <div class="col-6">
+                <div class="row" id="RowTitle">
+                    <div class="col-7">
+                        <h1 class="SensorDataTitles">Soil Moisture Data:</h1>
+                    </div>
+                    <div class="col-5">
+                        <button class="ButtonCSV2" (click)="ExportCSV()">Export to CSV</button>
+                    </div>
+                </div>
+                <div *ngIf="displayTable" class="SensorTableDiv">
+                    <table id="SensorTable" datatable [dtOptions]="dtOptions" class="row-border hover">
+                        <thead>
+                            <tr>
+                                <th>Sensor Name</th>
+                                <th>Time Collected</th>
+                                <th>Data</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let msensordata of Msensor">
+                                <td>{{msensordata.SensorID}}</td>
+                                <td>{{msensordata.TimeCollected}}</td>
+                                <td>{{msensordata.Data}} C</td> <!--.$numberDecimal   When Data is in Decimal128 and not Int32-->
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="row" id="RowTitle">
+                    <div class="col-7">
+                        <h1 class="SensorDataTitles">Temperature Data:</h1>
+                    </div>
+                    <div class="col-5">
+                        <button class="ButtonCSV2" (click)="ExportCSV()">Export to CSV</button>
+                    </div>
+                </div>
+                <div *ngIf="displayTable" class="SensorTableDiv">
+                    <table id="SensorTable" datatable [dtOptions]="dtOptions" class="row-border hover">
+                        <thead>
+                            <tr>
+                                <th>Sensor Name</th>
+                                <th>Time Collected</th>
+                                <th>Data</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let tsensordata of Tsensor">
+                                <td>{{tsensordata.SensorID}}</td>
+                                <td>{{tsensordata.TimeCollected}}</td>
+                                <td>{{tsensordata.Data}} C</td>  <!--.$numberDecimal   When Data is in Decimal128 and not Int32-->
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer" id="homefooter">
+        <img id="IconFooter" src="../../../assets/Images/page_icon.png" alt="Home Icon">
+        <h2 class="FooterText">ECSE 4600 - Final Project - Spring 2023</h2>
     </div>
 </body>
 </html>

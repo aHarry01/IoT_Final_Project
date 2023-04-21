@@ -8,14 +8,15 @@
   <app-navigation></app-navigation>
   <div class="row" id="page">
     <div class="col-6" id="PageColumns">
-      <div id="LiveDataDiv">
+      <!-- <div id="LiveDataDiv">
         <div class="container" id="DataDiv">
-          <h1 class="Title">Real Time Sensor Data</h1>
+          <h1 class="Title">Last Sensor Reading:</h1>
           <div class="row">
             <div class="col-1"></div>
             <div class="col-6" id="DataColumns">
               <h2 class="MiniTitle">Temperature Value:</h2>
             </div>
+            <div class="col-1"></div>
             <div class="col-4">
               <p class="DataOutput">  C</p>
             </div>
@@ -25,6 +26,7 @@
             <div class="col-6" id="DataColumns">
               <h2 class="MiniTitle">Humidity Value:</h2>
             </div>
+            <div class="col-1"></div>
             <div class="col-4">
               <p class="DataOutput">  %</p>
             </div>
@@ -34,6 +36,7 @@
             <div class="col-6" id="DataColumns">
               <h2 class="MiniTitle">Light Value:</h2>
             </div>
+            <div class="col-1"></div>
             <div class="col-4">
               <p class="DataOutput"> %</p>
             </div>
@@ -43,91 +46,79 @@
             <div class="col-6" id="DataColumns">
               <h2 class="MiniTitle">Moisture Value:</h2>
             </div>
+            <div class="col-1"></div>
             <div class="col-4">
               <p class="DataOutput"> %</p>
             </div>
           </div>
-    </div>
+        </div>
+      </div> -->
+      <div id="PlantStatusDiv">
+        <div class="container">
+          <h1 class="Title">Plants:</h1>
+          <div class="row">
+            <div class="col-1"></div>
+            <div class="col-5">
+              <h2 class="MiniTitle"> Plants Status:</h2>
+            </div>
+            <div class="col-4">
+               <p class="DataOutput" id="plantStatus"> </p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <div class="col-5">
       <div id="ActuatorControlDiv">
-        <h1 class="Title">Controls & Configurations</h1>
+        <h1 class="Title" style="margin-left: 18px;">Controls & Configurations:</h1>
         <div class="row">
           <div class="col-1"></div>
           <div class="col-5">
             <h2 class="MiniTitle"> Water Pump:</h2>
           </div>
           <div class="col-4">
-              <input type="button" (click)="waterPlant($event)" value="Water Plant">
+            <!-- <label class="switch" id="FanRelay">
+              <input (click)="waterPlant($event)" type="checkbox">
+              <span class="slider"></span>
+            </label> -->
+            <input type="button"  (click)="waterPlant($event)" value="Water Plant">
           </div>
         </div>
-		<div class="row">
-		   <div class="col-1"></div>
-          <div class="col-5">
-            <h2 class="MiniTitle"> Water Method:</h2>
-          </div>
-          <div class="col-4">
-			<select name="watering" id="waterMethod" (click)="changeWateringMode($event)"> 
-                      <option value="manual">Manual</option>
-                      <option value="time">Time based</option>
-                      <option value="soil_moisture">Soil Moisture based</option> </select>
-          </div>
-		</div>
-		<div class="row">
-		   <div class="col-1"></div>
-          <div class="col-5">
-            <h2 class="MiniTitle"> Configure Alert Levels:</h2>
-          </div>
-          <div class="col-4">
-            <table>
+        <div class="row">
+          <div class="col-1"></div>
+             <div class="col-5">
+               <h2 class="MiniTitle"> Water Method:</h2>
+             </div>
+             <div class="col-4">
+                <select name="watering" id="waterMethod" (click)="changeWateringMode($event)"> 
+                <option value="manual">Manual</option>
+                <option value="time">Time based</option>
+                <option value="soil_moisture">Soil Moisture based</option> </select>
+             </div>
+        </div>
+        <div class="row">
+          <div class="col-1"></div>
+             <div class="col-5">
+               <h2 class="MiniTitle"> Configure Alert Levels:</h2>
+             </div>
+             <div class="col-4">
+              <table>
                 <tr> <td> Temperature Range (F): <input type="number" id="tempLower"> to <input type="number" id="tempUpper"> </td> </tr>
                 <tr> <td> Humidity Range (%): <input type="number" id="humidityLower"> to <input type="number" id="humidityUpper"> </td> </tr>
                 <tr> <td> Soil Moisture Setpoint (%): <input type="number" id="soilMoisture"> </td> </tr>
                 <tr> <td> Daily Sunlight Exposure Time: <input type="number" id="sunlightTime"> </td> </tr> 
-				<tr> <td> Watering Time (hrs): <input type="number" id="wateringTime"> </td> </tr> 
+                <tr> <td> Watering Time (hrs): <input type="number" id="wateringTime"> </td> </tr> 
                 <tr> <td> <input type="button" value="Submit Alert Levels" (click)="updateAlertLevels($event)"> </td></tr>
-            </table>
-          </div>
-		</div>
-		<div class="row">
-          <div class="col-1"></div>
-          <div class="col-5">
-            <h2 class="MiniTitle"> Plant Status:</h2>
-          </div>
-          <div class="col-4">
-              <p id="plantStatus"> </p>
+              </table>
           </div>
         </div>
-        <br>
-      </div>
-      <div id="PersonalNotesDiv">
-        <div class="container" id="NotesDiv">
-          <h1 class="Title">Personal Notes</h1>
-        </div>
-        <!--<button id="SaveButton" (click)="updateUserNotes()" >Save</button>-->
       </div>
     </div>
   </div>
+  <div class="footer" id="homefooter" style="margin-top: 5.5% !important">
+    <img id="IconFooter" src="../../../assets/Images/page_icon.png" alt="Home Icon">
+    <h2 class="FooterText">ECSE 4600 - Final Project - Spring 2023</h2>
+  </div>
 </body>
 </html>
-
-    <!--<img id="PlantImage1" src="../../../assets/Images/Plant1.PNG" alt="">
-    <img id="PlantImage2" src="../../../assets/Images/Plant2.PNG" alt="">
-    <div>
-        <label class="switch" id="Actuator1">
-            <input type="checkbox" (click) = StatusChangeActuator1()>
-            <span class="slider"></span>
-          </label>
-          <br>
-          <label class="switch" id="Actuator2">
-            <input type="checkbox" (click) = StatusChangeActuator2()>
-            <span class="slider"></span>
-          </label>
-          <br>
-          <label class="switch" id="Actuator3">
-            <input type="checkbox" (click) = StatusChangeActuator3()>
-            <span class="slider"></span>
-          </label>
-    </div>-->
 
