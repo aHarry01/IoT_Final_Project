@@ -5,30 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-    <nav id="navigationBar" class="navbar navbar-expand-lg ">
-        <img id="WebPageIcon" src="../../../assets/Images/webpage_icon.png" class="d-inline-block align-top" alt="" [routerLink]="['/home']"> <!--/plantdata-->
+    <nav id="navBar" class="navbar navbar-expand-lg " style="margin-top: 0.5% !important">
+        <img id="HomeIcon" src="../../../assets/Images/webpage_icon.png" class="d-inline-block align-top" alt="" [routerLink]="['/home']"> <!--/plantdata-->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <ul  class="navbar-nav">
                 <li class="nav-item">
-                    <img id="NavIcon" src="../../../assets/Images/plant.png" alt="">
+                    <img id="IconNav1" src="../../../assets/Images/home.png" alt="">
                 </li>
                 <li class="nav-item">
-                    <a id="navbarLink" class="nav-link active" [routerLink]="['/home']">Home</a>
+                    <a id="LinkNav" class="nav-link active" [routerLink]="['/home']">Home</a>
                 </li>
                 <li class="nav-item">
-                    <img id="NavIcon" src="../../../assets/Images/data.png" alt="">
+                    <img id="IconNav2" src="../../../assets/Images/table.png" alt="">
                 </li>
                 <li class="nav-item">
-                    <a id="navbarLink" class="nav-link" [routerLink]="['/sensordata']">Sensor Data</a>
-                </li>
-                <li class="nav-item">
-                    <img id="NavIcon" src="../../../assets/Images/settings.png" alt="">
-                </li>
-                <li class="nav-item">
-                    <a id="navbarLink" class="nav-link" [routerLink]="['/graph']">Graph</a>
+                    <a id="LinkNav" class="nav-link" [routerLink]="['/sensordata']">Sensor Data</a>
                 </li>
             </ul>
         </div>

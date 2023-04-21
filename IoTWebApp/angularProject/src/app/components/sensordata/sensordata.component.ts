@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ExportToCsv } from 'export-to-csv';
-import { SensorService } from 'src/app/services/sensor.service';
+import { SensorService } from 'src/app/Services/sensor.service';
 
 @Component({
   selector: 'app-sensordata',
