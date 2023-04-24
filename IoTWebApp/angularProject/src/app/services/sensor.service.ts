@@ -1,7 +1,6 @@
 // File:           sensor.service.ts
 // Description:    This is the service file that uses Angular HttpClient to send HTTP requests for the sensor data.
 //                 The functions includes CRUD operations and a finder method.
-// Last Modified:  November 2nd, 2022
 
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
